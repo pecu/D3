@@ -2,15 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script src="https://d3js.org/d3.v4.min.js"></script>
   <title>Document</title>
 </head>
 <body>
-<svg width="500" height="500">
-<circle cx="150" cy="150" r="50" stroke="black" stroke-width="3" fill="#ffffff" />
-<circle cx="150" cy="300" r="100" stroke="black" stroke-width="3" fill="#ffffff" />
-<circle cx="130" cy="130" r="10" stroke="black" stroke-width="3" fill="#000000" />
-<circle cx="170" cy="130" r="10" stroke="black" stroke-width="3" fill="#000000" />
-<polygon points="150,155 145,160 155,160" style="fill:red;stroke:red;stroke-width:1" />
-</svg>  
+<script>
+var cdata = [
+{x:100, cy:150, r:50, color:"#ff1122"},
+{x:200, cy:150, r:50, color:"#ff1122"},
+{x:300, cy:150, r:50, color:"#ff1122"},
+{x:100, cy:100, r:50, color:"#ff0000"}];
+
+
+	var svgctrl = d3.select("body").append("svg").attr("width", 500).attr("height", 500);
+
+	var maddc = svgctrl.append("circle").attr("cx", 100).attr("cy", 100).attr("r", 50).attr("fill", "#000000");
+
+	var addDataToC = svgctrl.selectAll("circle").data(cdata).enter().append("circle");
+	
+	var addC = addDataToC.attr("cx", function(d){return d.x;}).attr("cy", function(d){return d.cy;}).attr("r", function(d){return d.r;}).attr("fill",function(d){return d.color;});
+</script>
 </body>
 </html>
