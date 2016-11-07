@@ -35,12 +35,12 @@ d3.csv("./stocks.csv", function(data) {
    dataset = data.map(function(d) { 
    return {
    		date: parseTime(d.date), 
-   		price: d.price 
+   		price: d.close 
    }; });
 });
 
 x.domain(d3.extent(dataset, function(d) { return d.date; }));
-y.domain([0, d3.max(dataset, function(d) { return d.close; })]);
+y.domain([0, d3.max(dataset, function(d) { return d.price; })]);
 svg.append("path").data(dataset).
     attr("class", "line").
     attr("d", valueline);
