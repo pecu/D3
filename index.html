@@ -7,7 +7,7 @@
 </head>
 <body>
 <script>
-var symbols = d3.csv("./stocks.csv", function(data) {
+var symbols = d3.csvParse("./stocks.csv", function(data) {
 	return {
 		symbol: data.symbol,
 		date: data.date,
