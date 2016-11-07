@@ -9,7 +9,6 @@
 <script>
 d3.csv("./stocks.csv", function(data) {
   console.log(data);
-  var parse = d3.time.format("%b %Y").parse;
   symbols = d3.nest()
       .key(function(d) { return d.symbol; })
       .entries(stocks = data);
