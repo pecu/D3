@@ -41,8 +41,8 @@ x.domain([0, d3.max(dataset, function(d) { return d.id; })]);
 y.domain([0, d3.max(dataset, function(d) { return d.price; })]);
 
 var valueline = d3.line().
-    x(function(d) { return x(d.id); }).
-    y(function(d) { return y(d.close); });
+    x(function(d) { return d.id; }).
+    y(function(d) { return d.price; });
 svg.append("path").
     attr("class", "line").
     attr("d", valueline(dataset));
