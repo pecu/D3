@@ -36,17 +36,15 @@ var svg = d3.select("body").append("svg")
 x.domain(d3.extent(dataset, function(d) { return d.date; }));
 y.domain([0, d3.max(dataset, function(d) { return d.price; })]);
 
-svg.append("path")
-      .data([data])
-      .attr("class", "line")
-      .attr("d", valueline);
-
-svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
-
-svg.append("g")
-      .call(d3.axisLeft(y));
+svg.append("path").
+	data(dataset).enter().
+	attr("class", "line").
+	attr("d", valueline);
+svg.append("g").
+   	attr("transform", "translate(0," + height + ")").
+    call(d3.axisBottom(x));
+svg.append("g").
+    call(d3.axisLeft(y));
 </script>
 </body>
 </html>
