@@ -20,9 +20,6 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
 var parseTime = d3.timeParse("%d-%b-%y");
 var x = d3.scaleTime().range([0, width]);
 var y = d3.scaleLinear().range([height, 0]);
-var valueline = d3.line().
-    x(function(d) { return x(d.date); }).
-    y(function(d) { return y(d.close); });
 var svg = d3.select("body").append("svg").
     attr("width", width + margin.left + margin.right).
     attr("height", height + margin.top + margin.bottom).
@@ -32,18 +29,23 @@ var svg = d3.select("body").append("svg").
 
 var dataset = [];
 d3.csv("./stocks.csv", function(data) {
-   dataset = data.map(function(d) { 
+   dataset = data.map(function(d,i) { 
    return {
+   		id: i,
    		date: parseTime(d.date), 
    		price: d.close 
    }; });
 });
 
-x.domain(d3.extent(dataset, function(d) { return d.date; }));
+x.domain([0, d3.max(dataset, function(d) { return d.id; })]);
 y.domain([0, d3.max(dataset, function(d) { return d.price; })]);
-svg.append("path").data(dataset).
+
+var valueline = d3.line().
+    x(function(d) { return x(d.id); }).
+    y(function(d) { return y(d.close); });
+svg.append("path").
     attr("class", "line").
-    attr("d", valueline);
+    attr("d", valueline(dataset));
 
 svg.append("g").
     attr("transform", "translate(0," + height + ")").
