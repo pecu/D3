@@ -31,14 +31,13 @@ var svg = d3.select("body").append("svg").
          "translate(" + margin.left + "," + margin.top + ")");
 
 var dataset = [];
-d3.csv("./stocks.csv", function(data)
-{
-	dataset = d3.map(data, function(d){
-		return {
-			date: d.date,
-			close: d.close
-		};
-  });
+d3.csv("./stocks.csv", function(data) {
+   dataset = data.map(function(d) { 
+   return {
+   		symbol:d.symbol, 
+   		date:d.date, 
+   		price:d.price 
+   }; });
 });
 
 x.domain(d3.extent(dataset, function(d) { return d.date; }));
