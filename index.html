@@ -34,9 +34,8 @@ var dataset = [];
 d3.csv("./stocks.csv", function(data) {
    dataset = data.map(function(d) { 
    return {
-   		symbol:d.symbol, 
-   		date:d.date, 
-   		price:d.price 
+   		date: parseTime(d.date), 
+   		price: d.price 
    }; });
 });
 
