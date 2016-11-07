@@ -15,7 +15,7 @@ d3.csv("./stocks.csv", function(data) {
 });
 
 var svgctrl = d3.select("body").append("svg").attr("width", 500).attr("height", 500);
-var datactrl = svgctrl.data(symbols).enter();
+var datactrl = svgctrl.data(symbols).enter().append("path").selectAll("path");
 
 var m = [20, 20, 30, 20],
     w = 960 - m[1] - m[3],
