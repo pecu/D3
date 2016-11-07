@@ -8,7 +8,11 @@
 <body>
 <script>
 var symbols = d3.csv("./stocks.csv", function(data) {
-	return data;
+	return {
+		symbol: data.symbol,
+		date: data.date,
+		price: data.price
+	};
 });
 
 var svgctrl = d3.select("body").append("svg").attr("width", 500).attr("height", 500);
