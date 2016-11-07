@@ -10,7 +10,11 @@
 var dataset = [];
 d3.csv("./stocks.csv", function(data) {
    dataset = data.map(function(d) { 
-   	return [ +d["symbol"], +d["date"], +d["date"] ]; });
+   	return {
+   		symbol:d.symbol, 
+   		date:d.date, 
+   		price:d.price 
+   	}; });
 });
 
 var svgctrl = d3.select("body").append("svg").attr("width", 500).attr("height", 500);
