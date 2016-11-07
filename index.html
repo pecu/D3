@@ -23,8 +23,8 @@ function lines() {
 	x = d3.scaleTime().range([0, w - 60]);
 	y = d3.scaleTime().range([h / 4 - 20, 0]);
 	x.domain([
-		d3.min(symbols, function(d) { return d.values[0].date; }),
-		d3.max(symbols, function(d) { return d.values[d.values.length - 1].date; })
+		d3.min(dataset, function(d) { return d.values[0].date; }),
+		d3.max(dataset, function(d) { return d.values[d.values.length - 1].date; })
 		]);
 	datactrl.each(function(d) {
 		var e = d3.select(this);
