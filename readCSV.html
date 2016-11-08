@@ -19,6 +19,7 @@ d3.csv("./stocks.csv",
 
 	function(data)
 	{
+		var ln = data.length;
 		data.forEach(
 			function(d)
 			{
@@ -34,14 +35,18 @@ d3.csv("./stocks.csv",
 
 		var valueline = d3.line().
 		x(
-			function(d) 
+			function(d,i) 
 			{ 
-				return x(d.date); 
+				xset = (width/ln) * i;
+				console.log(xset)
+				return xset;
 			}).
 		y(
 			function(d) 
 			{ 
-				return y(d.close); 
+				yset = d.close;
+				console.log(yset);
+				return yset;
 			});
 
 		ctrl.append("path").
