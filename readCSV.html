@@ -21,7 +21,9 @@ d3.csv("./stocks.csv",
 
 	function(data)
 	{
-		var ln = data.length;
+		var ln   = data.length;
+		var maxy = d3.max(data.close);
+		var miny = d3.min(data.close);
 		data.forEach(
 			function(d)
 			{
@@ -46,7 +48,7 @@ d3.csv("./stocks.csv",
 		y(
 			function(d) 
 			{ 
-				yset = d.close;
+				yset = (d.close / (maxy-miny)) * height;
 				console.log(yset);
 				return yset;
 			});
