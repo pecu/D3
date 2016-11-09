@@ -7,11 +7,16 @@
 </head>
 <body>
 <script type="text/javascript">
+var width = 1024;
+var height = 768;
+var ctrl = d3.select("body").append("svg").attr("width", width).attr("height", height);
 d3.csv("./HistoricalQuotes.csv", 
-
 	function(data)
 	{
-		console.log(data); 
+		var ln = data.length;
+		console.log(data);
+		var lines = d3.line().x(function(d,i){return i*(width/ln);}).y(function(d){return height-d.close});
+		ctrl.append("path").data([data]).attr("d", lines);
 	}
 
 );
