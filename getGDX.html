@@ -5,8 +5,11 @@
 </head>
 <body>
 <script type="text/javascript">
-	d3.csv("./table.csv", function(data){
+	d3.csv("./table.csv", function(data) {
 		console.log(data);
+		data.forEach(function(d) {
+			console.log(d.open);
+		})
 	})
 </script>
 </body>
