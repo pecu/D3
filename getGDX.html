@@ -5,12 +5,18 @@
 </head>
 <body>
 <script type="text/javascript">
-	d3.csv("./table.csv", function(data) {
-		console.log(data);
-		data.forEach(function(d) {
-			console.log(d.open);
-		})
-	})
+var width  = 1024;
+var height = 768; 
+d3.csv("./table.csv", function(data) {
+	console.log(data);
+	data.forEach(function(d) {
+		console.log(d.Open);
+	});
+	
+	var ctrl  = d3.select("body").append("svg").attr("width", width).attr("height", height);
+	var lines = d3.line().x(function(d,i){return i;}).y(function(d){return d.Open;});
+	ctrl.append("path").data(data).enter().attr("d", lines);
+});
 </script>
 </body>
 </html>
