@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <style>
+  	.line{
+  		fill: none;
+  		stroke-width: 3;
+        stroke: red;
+  	}
+  </style>
+  <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+var height = 600;
+var width  = 800;
+var parseTime = d3.timeParse("%d-%b-%y");
+d3.csv("./stocks.csv", 
+
+	function(data)
+	{
+		var ln   = data.length;
+		//var maxy = d3.max(data.close);
+		//var miny = d3.min(data.close);
+		maxy = 700;
+		miny = 50;
+		data.forEach(
+			function(d)
+			{
+				d.date = parseTime(d.date);
+				d.close = +d.close;
+			}
+		);
+
+		var ctrl = d3.select("body").append("svg").attr("width", width).attr("height", height);
+
+		var x = d3.scaleTime().range([0, width]);
+		var y = d3.scaleLinear().range([height, 0]);
+
+		var valueline = d3.line().
+		x(
+			function(d,i) 
+			{ 
+				xset = (width/ln) * i;
+				console.log(xset)
+				return xset;
+			}).
+		y(
+			function(d) 
+			{ 
+				yset = (d.close / (maxy-miny)) * height;
+				console.log(yset);
+				return yset;
+			});
+
+		ctrl.append("path").
+		data([data]).
+		attr("class", "line").
+		attr("d", valueline); 
+	}
+
+);
+</script>
+</body>
+</html>
