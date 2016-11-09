@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+.pathline {
+	stroke: red;
+	stroke-width: 3;
+	fill: none;
+}
+</style>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
@@ -18,7 +25,9 @@ d3.csv("./table.csv", function(data) {
 	var lines = d3.line().
 	x(function(d,i){ return i * (width/ln); }).
 	y(function(d){ return d.Open * (height/maxy); });
-	ctrl.append("path").data([data]).attr("d", lines);
+	ctrl.append("path").data([data]).
+	attr("class", "pathline").
+	attr("d", lines);
 });
 </script>
 </body>
