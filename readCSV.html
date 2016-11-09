@@ -16,7 +16,7 @@ d3.csv("./HistoricalQuotes.csv",
 		var ln = data.length;
 		console.log(data);
 		var lines = d3.line().x(function(d,i){return i*(width/ln);}).y(function(d){return height-d.close});
-		ctrl.append("path").data([data]).attr("d", lines).attr("strock", "red");
+		ctrl.append("path").data([data]).attr("d", lines).attr("stroke", "red");
 	}
 
 );
