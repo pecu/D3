@@ -24,6 +24,8 @@ d3.csv("./HistoricalQuotes.csv",
 			return "M0,0"+"L0,"+height;
 		}).attr("stroke", "black").attr("fill", "none");
 		ctrl.append("path").data([data]).attr("d", lines).attr("stroke", "red").attr("fill", "none");
+		var x = d3.scaleTime().range([0, width]);
+		var y = d3.scaleLinear().range([height, 0]);	
 		x.domain(d3.extent(data, function(d) { return d.date; }));
 		y.domain([0, maxy]);
 		ctrl.append("g")
