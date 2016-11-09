@@ -12,10 +12,13 @@ d3.csv("./table.csv", function(data) {
 	data.forEach(function(d) {
 		console.log(d.Open);
 	});
-	
+	var maxy = d3.max(data, function(d) { return d.Open; });
+	var ln = data.length;
 	var ctrl  = d3.select("body").append("svg").attr("width", width).attr("height", height);
-	var lines = d3.line().x(function(d,i){return i;}).y(function(d){return d.Open;});
-	ctrl.append("path").data(data).enter().attr("d", lines);
+	var lines = d3.line().
+	x(function(d,i){ return i * (width/ln); }).
+	y(function(d){ return d.Open * (height/maxy); });
+	ctrl.append("path").data([data]).attr("d", lines);
 });
 </script>
 </body>
