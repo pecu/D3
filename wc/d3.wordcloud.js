@@ -80,6 +80,7 @@
 
       var text = vis.selectAll("text")
         .data(data, function(d) {
+          console.log(d)
           return d.text.toLowerCase();
         });
       text.transition()
