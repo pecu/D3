@@ -1,19 +1,53 @@
-<html>
+<!DOCTYPE 
+html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns=
+"http://www.w3.org/1999/xhtml">
 <head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org" />
+  <meta http-equiv="Content-Type"
+  content="text/html; charset=utf-8" />
+
   <title>以 D3.js 製作的臺灣人口互動統計圖及統計地圖</title>
-  <link type="text/css" rel= "stylesheet" href="https://d3js.org/d3.v4.min.js" />
-  <link type="text/css" rel= "stylesheet" href="  https://d3js.org/d3-queue.v3.min.js
-" />
+
+  <link type="text/css" rel= "stylesheet" href="d3.slider.css" />
   <link type="text/css" rel= "stylesheet" href="main.css" />
+  <!-- script type='text/javascript' src= 'jquery.js'> </script>
+  <script type='text/javascript' src= 'div-switcher-jq.js'> </script -->
 </head>
 
 <body>
   <div id="content">
+    <h1>以 D3.js 製作的臺灣人口互動統計圖及統計地圖</h1>
+
+<p>有 「長條圖」、 「男女人口」、 「人口地圖」
+三個分頁可以切換。 滑鼠滾輪可以縮放地圖。
+主要顯示資訊為 「各階段年齡的人口佔該區總人口多少百分比」。
+更多說明請見 <a href="https://github.com/ckhung/d3-stat-map">
+程式碼下載區</a> 及 <a href="https://newtoypia.blogspot.tw/2015/11/d3js.html">
+「抄程式學 d3.js」</a>。
+<!-- a href="http://ckhung.github.com/d3-stat-map/index.zh_TW.html">
+計畫首頁</a --> </p>
+
+<p>This visualization of Taiwan population census is
+my first serious d3.js exercise.
+On the left you can choose the county. On the right
+there are 3 tabs to show in different ways
+the percentage of a range of population relative to
+the total population of each district/town.
+The age range is determined by the sliders.
+Mouse scroll wheel can be used to zoom.
+Code is <a href="https://github.com/ckhung/d3-stat-map">here</a>.
+
     <h2>[年齡範圍]</h2>
+
     <div class="control">
       <div id="slider-age-span"></div>
       <div id="slider-age-min"></div>
     </div>
+
     <p class="dummy-filler">
     不知為什麼， 這裡如果留空， div-switcher 就會失效</p>
 
@@ -33,6 +67,12 @@
     <div id="bar-chart-panel" class="switchable-div">
 
       <div id="bar-chart-proper">
+        <!--
+      <div class="entry"><div class="entry-text">臺中市霧峰區</div> <div class="entry-bar" style="width: 120px">&nbsp;</div></div>
+      <div class="entry"><div class="entry-text">臺中市大里區</div> <div class="entry-bar" style="width: 180px">&nbsp;</div></div>
+      <div class="entry"><div class="entry-text">臺中市太平區</div> <div class="entry-bar" style="width: 230px">&nbsp;</div></div>
+      <div class="entry"><div class="entry-text">臺中市烏日區</div> <div class="entry-bar" style="width: 200px">&nbsp;</div></div>
+-->
       </div>
     </div>
 
@@ -51,7 +91,11 @@
 
   </div>
 
+<script type="text/javascript" src="d3.js"></script>
+<script type="text/javascript" src="d3.slider.js"></script>
+<script type="text/javascript" src="d3-legend.js"></script>
 <script type="text/javascript" src="queue.js"></script>
+<script type="text/javascript" src="div-switcher-d3.js"></script>
 <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
