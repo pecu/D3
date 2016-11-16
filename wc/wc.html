@@ -12,7 +12,7 @@ d3.csv("./wordnews.csv", function(data) {
 	console.log(data);
 	      d3.wordcloud()
         .size([800, 400])
-        .selector('#cloud')
+        .selector('#wordcloud')
         .words(data)
         .start();
 });
