@@ -16,7 +16,7 @@ var svg = d3.select(".content").append("svg")
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
-d3.csv("http://pecu.github.io/D3/stocks.csv", function(error, data) {
+d3.csv("https://pecu.github.io/D3/stocks.csv", function(error, data) {
   if (error) throw error;
   data.forEach(function(d) {
       d.date = parseTime(d.date);
