@@ -79,8 +79,7 @@ function prepareTargetRegion(selected) {
     return d.name.indexOf(G.targetCity) >= 0;
   });
   /******************* population map *******************/
-  var viewBox = d3.select('#pm-rsvg-wrapper')
-    .attr('viewBox').split(' ').map(parseFloat);
+  var viewBox = d3.select('#pm-rsvg-wrapper').map(parseFloat);
   var width = viewBox[2], height = viewBox[3];
   var mproj = d3.geo.mercator().scale(1).translate([0, 0]);
   var mapObjs = d3.geo.path().projection(mproj);
