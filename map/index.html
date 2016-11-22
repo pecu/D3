@@ -15,7 +15,7 @@
                               d3.geoMercator().center([120.8,23.07]).scale(35000) 
                            );
                 //顏色
-                var color = d3.scale.linear().domain([100,200]).range(["#050","#f10"]);
+                var color = d3.scaleLinear().domain([100,200]).range(["#050","#f10"]);
                 //繪製地圖
                 d3.select("#svg1").selectAll("path")
                   .data(geojson.features)
