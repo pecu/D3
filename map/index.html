@@ -10,9 +10,9 @@
         <svg  width="800px" height="800px" id="svg1"></svg>
         <script>                
             d3.json("map.geojson", function(geojson) {
-                var path = d3.geo.path().projection( 
+                var path = d3.geoPath().projection( 
                               //scale值越大地圖尺寸越大
-                              d3.geo.mercator().center([120.8,23.07]).scale(35000) 
+                              d3.geoMercator().center([120.8,23.07]).scale(35000) 
                            );
                 //顏色
                 var color = d3.scale.linear().domain([100,200]).range(["#050","#f10"]);
