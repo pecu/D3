@@ -5,7 +5,7 @@
 	</head>
 	<body>
 	<script>
-		circleRadii = [50, 20, 10];
+		circleRadii = [40, 20, 10];
 		function hiD3(hi) {
 			var svgContainer = d3.select("body").append("svg")
 								.attr("width", 600)
@@ -18,7 +18,7 @@
 								.attr("cx", 50)
 								.attr("cy", 50)
 								.attr("r", function(d) { return d; })
-								.style("fill", function(d) {
+								.style("fill", function(d){
 									var returnColor;
 									if (d === 40) { 
 										returnColor = "green";
