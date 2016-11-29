@@ -1,6 +1,6 @@
 function myWD()
 {
-d3.csv("https://pecu.github.io/D3/wc.csv", 
+d3.csv("https://pecu.github.io/D3/wd.csv", 
       function(data)
       {
         d3.wordcloud()
